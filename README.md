@@ -177,7 +177,7 @@ Health check endpoint.
 
 ## Deployment
 
-**Frontend:** Deployed on Vercel  
+**Frontend:** Deployed on Railway  
 **Backend:** Deployed on Railway
 
 ---
