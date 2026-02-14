@@ -71,12 +71,12 @@ cd backend
 2. Create a virtual environment:
 ```bash
 python3 -m venv venv
-source venv/bin/activate  # On Windows: venv\Scripts\activate
+source venv/bin/activate  # On Windows: .\venv\Scripts\activate
 ```
 
-3. Install dependencies:
+3. Install all dependencies in the requirements.txt file:
 ```bash
-pip install -r requirements.txt
+pip install -r requirements.txt   
 ```
 
 4. Run the Flask server:
