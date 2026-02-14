@@ -1,32 +1,38 @@
-# MLB 2016 Qualifying Offer Calculator
+# MLB 2016 Qualifying Offer Calculator ⚾
+
+> **Hi! I'm Mary!** 👋  
+> Thank you so much for this opportunity! I built this app to showcase how I approach data problems and web development. I hope you love exploring it as much as I loved building it!  
+> **Go Phils!** 🔴⚪🔵
+
+---
 
 A web application that calculates the 2016 MLB Qualifying Offer by fetching live salary data and computing the average of the top 125 player salaries.
-
-Built for the Philadelphia Phillies Baseball R&D Team.
 
 ## Features
 
 - **Live Data Fetching**: Pulls fresh salary data from the source URL on each request
 - **Accurate Calculation**: Properly handles data cleaning (removes $, $$, $$$, commas, invalid entries)
-- **Beautiful UI**: Phillies-themed interface with red, white, and blue colors
+- **Interactive Visualizations**: Python-powered Plotly charts for salary distribution
+- **Percentile Calculator**: Fun widget to see where any salary would rank
+- **Beautiful UI**: Phillies-themed interface with the Phanatic!
 - **Responsive Design**: Works on desktop, tablet, and mobile
-- **Data Visualization**: Shows top 25 players and key statistics
 
-## 🛠 Tech Stack
+## Tech Stack
 
 **Frontend:**
-- React 18
-- TypeScript
+- React 18 + TypeScript
 - Vite
-- CSS3 (custom styling, no UI library)
+- Plotly (for displaying Python-generated charts)
+- Custom CSS (Phillies-themed, no UI library needed!)
 
 **Backend:**
-- Python 3.10+
-- Flask
-- Pandas
-- BeautifulSoup4
+- Python 3.12
+- Flask + Flask-CORS
+- Pandas (data cleaning & analysis)
+- Plotly (interactive visualizations)
+- BeautifulSoup4 (HTML parsing)
 
-## 📁 Project Structure
+## Project Structure
 
 ```
 phillies-qualifying-offer/
@@ -36,14 +42,15 @@ phillies-qualifying-offer/
 │   │   ├── App.css          # Phillies-themed styling
 │   │   ├── index.css        # Global styles
 │   │   └── main.tsx         # Entry point
+│   ├── public/
+│   │   └── phanatic.gif     # The star of the show!
 │   ├── index.html
 │   ├── package.json
-│   ├── tsconfig.json
 │   └── vite.config.ts
 ├── backend/
-│   ├── app.py               # Flask API
+│   ├── app.py               # Flask API with data processing
 │   └── requirements.txt
-└── data_analysis.py           # Standalone Python script
+└── data_analysis.py         # Standalone Python script (bonus!)
 ```
 
 ## Getting Started
@@ -55,7 +62,7 @@ phillies-qualifying-offer/
 cd backend
 ```
 
-2. Create a virtual environment (recommended):
+2. Create a virtual environment:
 ```bash
 python3 -m venv venv
 source venv/bin/activate  # On Windows: venv\Scripts\activate
@@ -95,12 +102,16 @@ The app will be available at `http://localhost:3000`
 ## API Endpoints
 
 ### `GET /api/calculate`
-Calculates the qualifying offer and returns detailed data.
+Calculates the qualifying offer and returns detailed data including Plotly charts.
 
 **Response:**
 ```json
 {
   "qualifying_offer": 16518594.14,
+  "median_salary": 15000000,
+  "salary_spread": 24571429,
+  "chart": { ... },  // Plotly bar chart JSON
+  "pie_chart": { ... },  // Plotly pie chart JSON
   "top_125": [
     {
       "player": "Kershaw, Clayton",
@@ -126,48 +137,49 @@ Health check endpoint.
 
 ## Design Decisions
 
+**Why Python for Visualizations?**
+- Python gives me more control over complex data transformations
+- The backend generates publication-quality charts that the frontend just displays
+
 **Color Scheme:**
-- Primary Red: `#E81828` (Phillies Red)
-- Primary Blue: `#002D72` (Phillies Blue)
-- Clean white backgrounds with subtle shadows
-- Gradient accents for visual interest
+- Phillies Red: `#E81828`
+- Phillies Blue: `#002D72`
+- Blue gradients for charts (from light `#A8C5E0` to dark `#001230`)
 
-**Typography:**
-- Inter font family for modern, clean look
-- Bold weights for numbers and important info
-- Proper hierarchy with sizing
-
-**Layout:**
-- Card-based design for easy scanning
-- Responsive grid for stats
-- Prominent display of the qualifying offer
-- Table for top 25 players
+**User Experience:**
+- Percentile calculator makes it interactive and fun
+- Expandable table (top 25 → all 125) keeps the page clean
+- Clear stat cards show key metrics at a glance
+- Animated Phanatic adds personality! 
 
 ## How It Works
 
-1. **Data Fetching**: The backend fetches HTML table from the source URL
-2. **Data Cleaning**: Removes invalid entries, cleans currency formatting
-3. **Calculation**: Sorts salaries, takes top 125, calculates average
-4. **Display**: Frontend shows results with beautiful visualizations
+1. **Data Fetching**: Backend fetches HTML from the source URL using pandas `read_html()`
+2. **Data Cleaning**: Removes `$`, `$$`, `$$$`, commas, converts to numbers, drops invalid entries
+3. **Calculation**: Sorts by salary (descending), takes top 125, calculates mean (QO) and median
+4. **Visualization**: Creates Plotly charts in Python, sends as JSON to frontend
+5. **Display**: React displays data with interactive Plotly charts
+
+## Key Features Explained
+
+- **Median vs Mean**: Shows both to demonstrate understanding of statistical concepts
+- **Salary Gap**: Highlights the $24M+ difference between #1 and #125
+- **Tier Breakdown**: Pie chart categorizes players into Elite/High Earners/Mid-Tier
+- **Percentile Calculator**: Interactive widget where you can input any salary and see where it ranks
+- **Data Quality Metrics**: Shows how many invalid entries were removed
 
 ## Notes
 
 - Data refreshes with each request (as per requirements)
-- Handles various data issues: multiple $, missing commas, blank cells
-- All 125 salaries are included in the average calculation
-- Invalid entries are properly filtered out
+- Handles edge cases: multiple `$`, missing commas, blank cells, "no salary data" text
+- All 125 salaries included in calculation
+- Standalone `data_analysis.py` script if you want to run it without the web interface
 
 ## Deployment
 
-### Deploy to Vercel (Recommended)
+**Frontend:** Deployed on Vercel  
+**Backend:** Deployed on Railway
 
-1. Push code to GitHub
-2. Import project in Vercel
-3. Configure build settings:
-   - Framework: Vite
-   - Root Directory: `frontend`
-   - Build Command: `npm run build`
-   - Output Directory: `dist`
+---
 
-4. Deploy backend separately (Railway, Render, or AWS)
-5. Update frontend API URL in production
+*Built with passion for the Philadelphia Phillies Baseball R&D Team* ⚾❤️
