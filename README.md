@@ -61,6 +61,8 @@ Before you begin, make sure you have installed:
 - Python 3.10+ (download from python.org)
 - Node.js 18+ (download from nodejs.org)
 
+Clone the repository. 
+
 ### Backend Setup
 
 1. Navigate to the backend directory:
