@@ -55,6 +55,12 @@ phillies-qualifying-offer/
 
 ## Getting Started
 
+## Prerequisites
+
+Before you begin, make sure you have installed:
+- Python 3.10+ (download from python.org)
+- Node.js 18+ (download from nodejs.org)
+
 ### Backend Setup
 
 1. Navigate to the backend directory:
@@ -80,7 +86,7 @@ python app.py
 
 The API will be available at `http://localhost:8000`
 
-### Frontend Setup
+### Frontend Setup - In Another Terminal (Keep the Backend running)
 
 1. Navigate to the frontend directory:
 ```bash
