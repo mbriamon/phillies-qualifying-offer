@@ -175,11 +175,6 @@ Health check endpoint.
 - All 125 salaries included in calculation
 - Standalone `data_analysis.py` script if you want to run it without the web interface
 
-## Deployment
-
-**Frontend:** Deployed on Railway  
-**Backend:** Deployed on Railway
-
 ---
 
 *Built with passion for the Philadelphia Phillies Baseball R&D Team* ⚾❤️
